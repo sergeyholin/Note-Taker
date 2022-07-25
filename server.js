@@ -1,6 +1,7 @@
 const express = require ('express');
 const fs = require ('fs');
 const util = require ('util');
+const uuid = require("./helpers/uuid")
 
 const path = require('path');
 const { readFromFile, writeToFile, readAndAppend } = require('./helpers/fsUtils');
@@ -12,6 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+// -------------------------------------------------------------
 // Get route for homepage
 app.get('/', (req, res) => 
     res.sendFile(path.join(__dirname, '/public/index.html'))
@@ -23,12 +25,12 @@ app.get('/notes', (req, res) =>
 // ----------------------------------
 // Get route for retrieving all notes
 app.get('/api/notes', (req, res) => {
-    console.info(`${req.method} request received for notes`);
+    console.info(`${req.method} request received`);
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
   });
 // POST route for new note
 app.post('/api/notes', (req, res) => {
-    console.info(`${req.method} request received to add a note`);
+    console.info(`${req.method} request received`);
   
     const { title, text } = req.body;
   
@@ -36,6 +38,8 @@ app.post('/api/notes', (req, res) => {
       const newNote = {
         title,
         text,
+        id: uuid(),
+
       };
   
       readAndAppend(newNote, './db/db.json');
@@ -44,6 +48,14 @@ app.post('/api/notes', (req, res) => {
       res.error('Error in adding note');
     }
   });
+  // Delete route
+  app.delete(`/api/notes/:id`, (req, res) => {
+    console.info(`${req.method} request received`);
+    // res.send("DELETE Request Called")
+      readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+      console.log(data)
+  });
+  
 //   -----------------------------
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
