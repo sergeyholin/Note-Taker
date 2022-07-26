@@ -1,10 +1,10 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 # Note-Taker
 Module 11 Challenge by Sergey Holin
 
 GitHub Repo Link: https://github.com/sergeyholin/Note-Taker
 
-Heroku Live Deployment Link: 
+Live Deployment Link: https://note-taker-app-12.herokuapp.com/
 
 ## ABOUT THE APP:
 
@@ -36,8 +36,8 @@ Express.js (https://expressjs.com/)
 
 ## CITATIONS:
 
-In server.js line 57 was inspired by an answer on stack overflow by GregL.
-Source: (https://stackoverflow.com/questions/65015000/how-do-i-use-express-js-app-delete-to-remove-a-specific-object-from-an-array#:~:text=Assuming%20your%20array%20is%20just,req%2C%20res)%20%7B%20console.)
+In server.js line 57 was inspired by an answer on stack overflow by GregL:
+(https://stackoverflow.com/questions/65015000/how-do-i-use-express-js-app-delete-to-remove-a-specific-object-from-an-array#:~:text=Assuming%20your%20array%20is%20just,req%2C%20res)%20%7B%20console.)
 
 ## SCREENSHOT:
 
